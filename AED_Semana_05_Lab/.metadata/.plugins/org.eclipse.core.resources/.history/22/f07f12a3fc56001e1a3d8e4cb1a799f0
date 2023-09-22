@@ -1,0 +1,135 @@
+package semana_05;
+
+public class ArregloNotas {
+private int[] nota={11, 10, 16, 18, 15, 13, 20, 12, 19, 17};
+
+public ArregloNotas(){
+	
+}
+
+
+public int tamanio(){
+	return nota.length;
+}
+
+
+public int obtener(int i){
+	return nota[i];
+}
+
+
+public double sumatoriaNotas() {
+	double suma = 0;
+	for (int i = 0; i < tamanio(); i++) {
+		suma += nota[i];
+	}
+	return suma;
+}
+
+public double retonarPromedioNotas() {
+	return sumatoriaNotas() / tamanio();
+}
+
+
+public int notaMayor(){
+	int mayor=0;
+	for(int i=0; i<tamanio(); i++){
+		if(mayor<nota[i]){
+			mayor = nota[i];
+		}
+	}
+	return mayor;
+}
+
+
+public int notaMenor(){
+	int menor=nota[0];
+	for(int i=1; i<tamanio(); i++){
+		if(menor>nota[i]){
+			menor = nota[i];
+		}
+	}
+	return menor ;
+}
+
+
+
+public int cantNotasAprobatorias(){
+	int cont = 0;
+	for(int i=0; i<tamanio();  i++){
+		if(nota[i]>=13){cont++;}
+	}
+	return cont;
+}
+
+
+public int  cantNotasDesaprobatorias(){
+	int cont = 0;
+	for(int i=0; i<tamanio();  i++){
+		if(nota[i]<13){cont++;}
+	}
+	return cont;
+}
+
+//falta corregir
+public int cantNotasMayoresA15(){
+	int cont = 0;
+	for(int i=0; i<tamanio();  i++){
+		if(nota[i]>15){cont++;}
+	}
+	return cont;
+}
+
+
+
+
+public int posPrimeraNotaAprobatoria(){
+	for(int i=0; i<tamanio();  i++){
+		if(nota[i]>=13){
+			return i;
+		}
+	}
+	return -1;
+}
+
+
+//falta corregir
+public int posPenultimaNotaDesaprobatoria() {
+    int posicion = -1; // Inicializamos la posición en -1
+    int contadorDesaprobatorias = 0; // Contador para llevar el registro de notas desaprobatorias encontradas
+
+    // Recorremos el arreglo de notas en busca de notas desaprobatorias
+    for (int i = nota.length -1; i>=0; i--) {
+        if (nota[i] < 13) {
+            // Si encontramos una nota desaprobatoria, incrementamos el contador
+            contadorDesaprobatorias++;
+
+            // Si hemos encontrado al menos dos notas desaprobatorias, actualizamos la posición
+            if (contadorDesaprobatorias == 2) {
+                posicion = i;
+                break; // Salimos del bucle una vez que encontramos la penúltima nota desaprobatoria
+            }
+        }
+    }
+
+    return posicion; // Devolvemos la posición de la penúltima nota desaprobatoria o -1 si no se encuentra ninguna
+}
+
+
+
+
+public void  generarNotas() {
+	for (int i = 0; i < tamanio(); i++)
+		nota[i] = aleatorio(0, 20);
+}
+
+
+private int aleatorio(int min, int max) {
+	return (int) ((max - min + 1) * Math.random()) + min;
+}
+
+
+
+
+
+}

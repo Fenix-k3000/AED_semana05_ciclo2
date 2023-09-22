@@ -1,0 +1,156 @@
+package semana_05;
+
+public class ArregloNotas {
+private int[] nota={11, 10, 16, 18, 15, 13, 20, 12, 19, 17};
+
+public ArregloNotas(){
+	
+}
+
+
+public int tamanio(){
+	return nota.length;
+}
+
+
+public int obtener(int i){
+	return nota[i];
+}
+
+
+public double sumatoriaNotas() {
+	double suma = 0;
+	for (int i = 0; i < tamanio(); i++) {
+		suma += nota[i];
+	}
+	return suma;
+}
+
+public double retonarPromedioNotas() {
+	return sumatoriaNotas() / tamanio();
+}
+
+
+public int notaMayor(){
+	int mayor=0;
+	for(int i=0; i<tamanio(); i++){
+		if(mayor<nota[i]){
+			mayor = nota[i];
+		}
+	}
+	return mayor;
+}
+
+
+public int notaMenor(){
+	int menor=nota[0];
+	for(int i=1; i<tamanio(); i++){
+		if(menor>nota[i]){
+			menor = nota[i];
+		}
+	}
+	return menor ;
+}
+
+
+
+public int cantNotasAprobatorias(){
+	int cont = 0;
+	for(int i=0; i<tamanio();  i++){
+		if(nota[i]>=13){cont++;}
+	}
+	return cont;
+}
+
+
+public int  cantNotasDesaprobatorias(){
+	int cont = 0;
+	for(int i=0; i<tamanio();  i++){
+		if(nota[i]<13){cont++;}
+	}
+	return cont;
+}
+
+
+public int cantNotasMayoresA15(){
+	int cont = 0;
+	for(int i=0; i<tamanio();  i++){
+		if(nota[i]>15){cont++;}
+	}
+	return cont;
+}
+
+
+public int posPrimeraNotaAprobatoria(){
+	for(int i=0; i<tamanio();  i++){
+		if(nota[i]>=13){
+			return i;
+		}
+	}
+	return -1;
+}
+
+
+//falta corregir
+public int posPenultimaNotaDesaprobatoria() {
+    int posicion = -1;
+    int contadorDesaprobatorias = 0;
+
+    for (int i = 0; i < nota.length; i++) {
+        if (nota[i] < 13) {
+            contadorDesaprobatorias++;
+            if (contadorDesaprobatorias == 2) {
+                posicion = i;
+            }
+        }
+    }
+
+    if (contadorDesaprobatorias < 2) {
+        return -1; // Si hay menos de dos notas desaprobatorias, retornamos -1
+    } else {
+        return posicion;
+    }
+}
+En este código, estamos buscando la posición de la penúltima nota desaprobatoria en el arreglo nota. Si hay menos de dos notas desaprobatorias, se devuelve -1. Si todavía tienes alguna pregunta o necesitas más aclaraciones, por favor, házmelo saber.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public void  generarNotas() {
+	for (int i = 0; i < tamanio(); i++)
+		nota[i] = aleatorio(0, 20);
+}
+
+
+private int aleatorio(int min, int max) {
+	return (int) ((max - min + 1) * Math.random()) + min;
+}
+
+
+
+
+
+}
